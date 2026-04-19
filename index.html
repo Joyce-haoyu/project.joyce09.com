@@ -4,37 +4,161 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Joyce's Project Hub</title>
-    <link rel="stylesheet" href="style.css">
+    <style>
+        /* 基础样式 */
+        body {
+            font-family: 'Segoe UI', "Microsoft YaHei", sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+            color: #333;
+        }
+
+        /* 顶部导航/标题栏 */
+        header {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+            letter-spacing: 2px;
+        }
+
+        header p {
+            margin-top: 10px;
+            opacity: 0.9;
+        }
+
+        /* 项目容器 */
+        .container {
+            max-width: 1100px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        /* 项目网格布局 */
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        /* 项目卡片样式 */
+        .card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.1);
+        }
+
+        .card-image {
+            height: 160px;
+            background: #e9ecef;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            background: linear-gradient(45deg, #6a11cb 0%, #2575fc 100%);
+            color: white;
+        }
+
+        .card-content {
+            padding: 20px;
+            flex-grow: 1;
+        }
+
+        .card-content h3 {
+            margin: 0 0 10px 0;
+            color: #2a5298;
+        }
+
+        .card-content p {
+            font-size: 0.9rem;
+            color: #666;
+            line-height: 1.5;
+        }
+
+        /* 跳转按钮 */
+        .btn {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 10px 20px;
+            background-color: #2a5298;
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            transition: background 0.2s;
+        }
+
+        .btn:hover {
+            background-color: #1e3c72;
+        }
+
+        /* 页脚 */
+        footer {
+            text-align: center;
+            padding: 40px 0;
+            color: #888;
+            font-size: 0.9rem;
+        }
+    </style>
 </head>
 <body>
+
     <header>
-        <h1>By Joyce作品库</h1>
-        <p>Joyce09.com</p>
+        <h1>Joyce 的项目作品库</h1>
+        <p>探索技术与创意的边界 | Python & Web Development</p>
     </header>
 
-    <main class="container">
-        <section class="grid">
+    <div class="container">
+        <div class="project-grid">
+
             <div class="card">
+                <div class="card-image">✈️</div>
+                <div class="card-content">
+                    <h3>飞机大战 (Air Battle)</h3>
+                    <p>基于 HTML/Python 逻辑开发的经典射击游戏。包含流畅的射击体验和简单的敌机 AI 系统。</p>
+                    <a href="projects/air-battle/index.html" class="btn">立即开始游戏</a>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-image">🔢</div>
                 <div class="card-content">
                     <h3>2048 经典版</h3>
-                    <p>基于 JavaScript 实现的经典数字合并游戏。</p>
-                    <a href="projects/2048/index.html" class="btn">打开项目</a>
+                    <p>逻辑严密的数字合并游戏。挑战你的思维极限，看看能不能合成 2048！</p>
+                    <a href="#" class="btn">敬请期待</a>
                 </div>
             </div>
 
-            <div class="card">
+            <div class="card" style="border: 2px dashed #ccc; background: transparent; box-shadow: none;">
+                <div class="card-image" style="background: #eee; color: #999;">+</div>
                 <div class="card-content">
-                    <h3>Air Battle (Python)</h3>
-                    <p>使用 PyScript 在浏览器运行的 Python 射击游戏。</p>
-                    <a href="projects/air-battle/index.html" class="btn">打开项目</a>
+                    <h3>新项目开发中</h3>
+                    <p>更多精彩有趣的 Python 和前端项目正在路上...</p>
                 </div>
             </div>
 
-            </section>
-    </main>
+        </div>
+    </div>
 
     <footer>
-        <p>Produced by Joyce | &copy; 2026</p>
+        <p>Produced by Joyce | &copy; 2026 project.joyce09.com</p>
     </footer>
+
 </body>
 </html>
