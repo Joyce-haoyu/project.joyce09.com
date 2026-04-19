@@ -1,26 +1,95 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Air Battle - Python Online</title>
-    <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
-    <script defer src="https://pyscript.net/latest/pyscript.js"></script>
+    <meta charset="UTF-8">
+    <title>Air Battle - JS版</title>
     <style>
-        body { background: #000; color: #fff; text-align: center; }
-        #game-canvas { border: 2px solid #fff; margin-top: 20px; }
+        body { margin: 0; background: #000; overflow: hidden; color: #fff; font-family: sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; flex-direction: column; }
+        canvas { background: #050505; border: 2px solid #333; cursor: crosshair; }
+        .ui { position: absolute; top: 20px; left: 20px; pointer-events: none; }
+        .back { margin-top: 10px; color: #555; text-decoration: none; }
     </style>
 </head>
 <body>
-    <h1>Air Battle Game</h1>
-    <p>正在加载 Python 环境...</p>
-    
-    <py-script>
-        print("Hello from Python! 游戏逻辑加载中...")
-        # 这里放置你的 Python/Pygame-ce 代码逻辑
-        # 注意：在网页运行 Pygame 需要特定配置，简单逻辑可以直接运行
-    </py-script>
+    <div class="ui">分数: <span id="score">0</span></div>
+    <canvas id="gameCanvas"></canvas>
+    <a href="../../index.html" class="back">← 返回主页</a>
 
-    <div id="game-output"></div>
-    <br>
-    <a href="../../index.html" style="color: cyan;">返回主页</a>
+    <script>
+        const canvas = document.getElementById('gameCanvas');
+        const ctx = canvas.getContext('2d');
+        const scoreEl = document.getElementById('score');
+        
+        canvas.width = 400;
+        canvas.height = 600;
+
+        let score = 0;
+        let player = { x: 180, y: 500, w: 40, h: 40, color: '#007aff' };
+        let bullets = [];
+        let enemies = [];
+
+        // 监听鼠标移动
+        window.addEventListener('mousemove', (e) => {
+            const rect = canvas.getBoundingClientRect();
+            player.x = e.clientX - rect.left - player.w / 2;
+        });
+
+        // 自动射击
+        setInterval(() => {
+            bullets.push({ x: player.x + player.w/2 - 2, y: player.y, w: 4, h: 10 });
+        }, 200);
+
+        // 生成敌机
+        setInterval(() => {
+            enemies.push({ x: Math.random() * (canvas.width - 30), y: -30, w: 30, h: 30, speed: 2 + Math.random() * 3 });
+        }, 800);
+
+        function update() {
+            // 子弹移动
+            bullets.forEach((b, i) => {
+                b.y -= 7;
+                if (b.y < 0) bullets.splice(i, 1);
+            });
+
+            // 敌机移动
+            enemies.forEach((e, i) => {
+                e.y += e.speed;
+                if (e.y > canvas.height) enemies.splice(i, 1);
+
+                // 碰撞检测
+                bullets.forEach((b, bi) => {
+                    if (b.x < e.x + e.w && b.x + b.w > e.x && b.y < e.y + e.h && b.y + b.h > e.y) {
+                        enemies.splice(i, 1);
+                        bullets.splice(bi, 1);
+                        score += 10;
+                        scoreEl.innerText = score;
+                    }
+                });
+            });
+        }
+
+        function draw() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            // 画玩家 (简单的蓝色方块飞机)
+            ctx.fillStyle = player.color;
+            ctx.fillRect(player.x, player.y, player.w, player.h);
+
+            // 画子弹
+            ctx.fillStyle = '#ff3b30';
+            bullets.forEach(b => ctx.fillRect(b.x, b.y, b.w, b.h));
+
+            // 画敌机
+            ctx.fillStyle = '#ffcc00';
+            enemies.forEach(e => ctx.fillRect(e.x, e.y, e.w, e.h));
+
+            requestAnimationFrame(() => {
+                update();
+                draw();
+            });
+        }
+
+        draw();
+    </script>
 </body>
 </html>
