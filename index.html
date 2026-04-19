@@ -3,162 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Joyce's Project Hub</title>
+    <title>Joyce's Hub</title>
     <style>
-        /* 基础样式 */
-        body {
-            font-family: 'Segoe UI', "Microsoft YaHei", sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f8f9fa;
-            color: #333;
-        }
-
-        /* 顶部导航/标题栏 */
-        header {
-            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
-            color: white;
-            padding: 60px 20px;
-            text-align: center;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-        }
-
-        header h1 {
-            margin: 0;
-            font-size: 2.5rem;
-            letter-spacing: 2px;
-        }
-
-        header p {
-            margin-top: 10px;
-            opacity: 0.9;
-        }
-
-        /* 项目容器 */
-        .container {
-            max-width: 1100px;
-            margin: 40px auto;
-            padding: 0 20px;
-        }
-
-        /* 项目网格布局 */
-        .project-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 30px;
-        }
-
-        /* 项目卡片样式 */
-        .card {
-            background: white;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.05);
-            transition: all 0.3s ease;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 12px 30px rgba(0,0,0,0.1);
-        }
-
-        .card-image {
-            height: 160px;
-            background: #e9ecef;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3rem;
-            background: linear-gradient(45deg, #6a11cb 0%, #2575fc 100%);
-            color: white;
-        }
-
-        .card-content {
-            padding: 20px;
-            flex-grow: 1;
-        }
-
-        .card-content h3 {
-            margin: 0 0 10px 0;
-            color: #2a5298;
-        }
-
-        .card-content p {
-            font-size: 0.9rem;
-            color: #666;
-            line-height: 1.5;
-        }
-
-        /* 跳转按钮 */
-        .btn {
-            display: inline-block;
-            margin-top: 15px;
-            padding: 10px 20px;
-            background-color: #2a5298;
-            color: white;
-            text-decoration: none;
-            border-radius: 25px;
-            font-size: 0.9rem;
-            transition: background 0.2s;
-        }
-
-        .btn:hover {
-            background-color: #1e3c72;
-        }
-
-        /* 页脚 */
-        footer {
-            text-align: center;
-            padding: 40px 0;
-            color: #888;
-            font-size: 0.9rem;
-        }
+        body { font-family: -apple-system, sans-serif; background: #f0f2f5; margin: 0; display: flex; flex-direction: column; min-height: 100vh; }
+        header { background: #1a1a1a; color: white; padding: 40px 20px; text-align: center; }
+        .container { max-width: 900px; margin: 40px auto; padding: 0 20px; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
+        .card { background: white; border-radius: 12px; padding: 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); text-decoration: none; color: inherit; transition: 0.2s; border: 1px solid #eee; }
+        .card:hover { transform: translateY(-5px); border-color: #007aff; }
+        .card h3 { margin-top: 0; color: #007aff; }
+        footer { margin-top: auto; padding: 20px; text-align: center; color: #888; font-size: 14px; }
     </style>
 </head>
 <body>
-
     <header>
-        <h1>Joyce 的项目作品库</h1>
-        <p>探索技术与创意的边界 | Python & Web Development</p>
+        <h1>Joyce 的项目空间</h1>
+        <p>纯净 · 极速 · 创意</p>
     </header>
-
     <div class="container">
-        <div class="project-grid">
-
-            <div class="card">
-                <div class="card-image">✈️</div>
-                <div class="card-content">
-                    <h3>飞机大战 (Air Battle)</h3>
-                    <p>基于 HTML/Python 逻辑开发的经典射击游戏。包含流畅的射击体验和简单的敌机 AI 系统。</p>
-                    <a href="projects/air-battle/index.html" class="btn">立即开始游戏</a>
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="card-image">🔢</div>
-                <div class="card-content">
-                    <h3>2048 经典版</h3>
-                    <p>逻辑严密的数字合并游戏。挑战你的思维极限，看看能不能合成 2048！</p>
-                    <a href="#" class="btn">敬请期待</a>
-                </div>
-            </div>
-
-            <div class="card" style="border: 2px dashed #ccc; background: transparent; box-shadow: none;">
-                <div class="card-image" style="background: #eee; color: #999;">+</div>
-                <div class="card-content">
-                    <h3>新项目开发中</h3>
-                    <p>更多精彩有趣的 Python 和前端项目正在路上...</p>
-                </div>
-            </div>
-
-        </div>
+        <a href="projects/air-battle/index.html" class="card">
+            <h3>✈️ 飞机大战</h3>
+            <p>纯 JavaScript 开发，秒加载，流畅射击体验。</p>
+        </a>
+        <a href="#" class="card" style="opacity: 0.6">
+            <h3>🔢 2048 (开发中)</h3>
+            <p>即将上线...</p>
+        </a>
     </div>
-
-    <footer>
-        <p>Produced by Joyce | &copy; 2026 project.joyce09.com</p>
-    </footer>
-
+    <footer>Powered by Joyce | 2026</footer>
 </body>
 </html>
