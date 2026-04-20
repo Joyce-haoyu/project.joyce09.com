@@ -3,38 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Joyce's Project Hub</title>
+    <title>Joyce的灵感空间</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
-        <h1>Joyce 的项目作品库</h1>
-        <p>Powered By Joyce岳浩宇</p>
-    </header>
+    <div class="aurora-bg"></div>
 
-    <main class="container">
-        <section class="grid">
-            <div class="card">
-                <div class="card-content">
-                    <h3>飞机大战</h3>
-                    <p>By Teacher</p>
-                    <a href="./飞机大战" class="btn">打开项目</a>
-                </div>
+    <div class="container">
+        <header class="header">
+            <h1 class="title">Joyce的项目空间</h1>
+            <p class="subtitle">岳浩宇 project space</p>
+        </header>
+
+        <main>
+            <div id="project-grid" class="grid">
+                <div class="loading">正在载入作品库...</div>
             </div>
+        </main>
+    </div>
 
-            <div class="card">
-                <div class="card-content">
-                    <h3>Air Battle (Python)</h3>
-                    <p>使用 PyScript 在浏览器运行的 Python 射击游戏。</p>
-                    <a href="projects/air-battle/index.html" class="btn">打开项目</a>
-                </div>
-            </div>
-
-            </section>
-    </main>
-
-    <footer>
-        <p>Produced by Joyce Y.Horizon 岳浩宇 | &copy; 2026</p> | Joyce09.com 
-    </footer>
+    <script src="script.js"></script>
 </body>
 </html>
