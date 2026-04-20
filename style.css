@@ -1,57 +1,113 @@
-body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    margin: 0;
-    background-color: #f4f7f6;
-    color: #333;
+:root {
+    --glass-bg: rgba(255, 255, 255, 0.08);
+    --glass-border: 1px solid rgba(255, 255, 255, 0.15);
+    --text-main: #ffffff;
+    --text-muted: rgba(255, 255, 255, 0.6);
 }
 
-header {
-    background: linear-gradient(135deg, #2c3e50, #4ca1af);
-    color: white;
-    padding: 3rem 1rem;
-    text-align: center;
+body {
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, "SF Pro Display", BlinkMacSystemFont, sans-serif;
+    background-color: #050505;
+    color: var(--text-main);
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* 极光背景动画 */
+.aurora-bg {
+    position: fixed;
+    top: -50%; left: -50%; width: 200%; height: 200%;
+    background: radial-gradient(circle at 50% 50%, #1e1b4b 0%, #000000 60%),
+                radial-gradient(circle at 80% 20%, #312e81 0%, transparent 40%),
+                radial-gradient(circle at 20% 80%, #064e3b 0%, transparent 40%);
+    filter: blur(100px);
+    z-index: -1;
+    animation: rotate 30s linear infinite;
+    opacity: 0.8;
+}
+
+@keyframes rotate {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }
 
 .container {
     max-width: 1200px;
-    margin: 2rem auto;
-    padding: 0 1rem;
+    margin: 0 auto;
+    padding: 60px 20px;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 80px;
+}
+
+.title {
+    font-size: 4rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    letter-spacing: -1px;
+}
+
+.subtitle {
+    font-size: 1.1rem;
+    color: var(--text-muted);
 }
 
 .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 30px;
 }
 
-.card {
-    background: white;
-    border-radius: 12px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    transition: transform 0.3s ease;
+/* 游戏/作品卡片 */
+.project-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: var(--glass-border);
+    border-radius: 24px;
+    padding: 40px 30px;
+    text-decoration: none;
+    color: var(--text-main);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    position: relative;
     overflow: hidden;
 }
 
-.card:hover {
+.project-card:hover {
     transform: translateY(-10px);
+    background: rgba(255, 255, 255, 0.12);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    border-color: rgba(255, 255, 255, 0.3);
 }
 
-.card-content {
-    padding: 1.5rem;
+.project-card:active {
+    transform: scale(0.96);
 }
 
-.btn {
-    display: inline-block;
-    margin-top: 1rem;
-    padding: 0.5rem 1.2rem;
-    background-color: #4ca1af;
-    color: white;
-    text-decoration: none;
-    border-radius: 5px;
+.card-icon {
+    font-size: 54px;
+    margin-bottom: 20px;
+    filter: drop-shadow(0 4px 10px rgba(0,0,0,0.3));
 }
 
-footer {
-    text-align: center;
-    padding: 2rem;
-    color: #777;
+.card-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.card-action {
+    margin-top: 20px;
+    font-size: 0.9rem;
+    color: #4ade80; /* 柔和的霓虹绿，提示可运行 */
+    font-weight: 500;
+    opacity: 0.8;
 }
